@@ -8,8 +8,10 @@ import Tool from '../../infra/typeorm/entities/Tool';
 class ToolsRepository implements IToolsRepository {
   private tools: Tool[] = [];
 
-  public async index(): Promise<Tool[]> {
-    return this.tools;
+  public async index(tag?: string): Promise<Tool[]> {
+    return !tag
+      ? this.tools
+      : this.tools.filter(tool => tool.tags.includes(tag));
   }
 
   public async findById(id: string): Promise<Tool | undefined> {

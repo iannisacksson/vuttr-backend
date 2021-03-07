@@ -2,13 +2,13 @@ import { Router } from 'express';
 
 import ToolsController from '../controllers/ToolsController';
 
-import create from './validations/tools.validation';
+import { create, query } from './validations/tools.validation';
 
 const toolsRouter = Router();
 const toolsController = new ToolsController();
 
 toolsRouter.post('/', create, toolsController.create);
 
-toolsRouter.get('/', toolsController.index);
+toolsRouter.get('/', query, toolsController.index);
 
 export default toolsRouter;

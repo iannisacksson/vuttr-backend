@@ -22,9 +22,11 @@ export default class ToolsController {
   }
 
   public async index(request: Request, response: Response): Promise<Response> {
+    const { tag } = request.query;
+
     const indexTool = container.resolve(IndexToolService);
 
-    const tools = await indexTool.execute();
+    const tools = await indexTool.execute(tag as string);
 
     return response.json(tools);
   }

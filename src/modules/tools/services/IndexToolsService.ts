@@ -10,8 +10,8 @@ class IndexToolsService {
     private toolsRepository: IToolsRepository,
   ) {}
 
-  public async execute(): Promise<Tool[]> {
-    const tools = await this.toolsRepository.index();
+  public async execute(tag?: string): Promise<Tool[]> {
+    const tools = await this.toolsRepository.index(tag);
 
     return tools;
   }

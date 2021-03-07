@@ -1,6 +1,6 @@
 import { Joi, Segments, celebrate } from 'celebrate';
 
-const create = celebrate({
+export const create = celebrate({
   [Segments.BODY]: {
     title: Joi.string().required(),
     link: Joi.string().required(),
@@ -9,4 +9,8 @@ const create = celebrate({
   },
 });
 
-export default create;
+export const query = celebrate({
+  [Segments.QUERY]: {
+    tag: Joi.string(),
+  },
+});

@@ -12,10 +12,14 @@ class ToolsRepository implements IToolsRepository {
     this.ormRepository = getRepository(Tool);
   }
 
-  public async index(): Promise<Tool[]> {
-    const tool = await this.ormRepository.find({
-      order: { title: 'ASC' },
-    });
+  public async index(tag?: string): Promise<Tool[]> {
+    const query = !tag ? '' : `'${tag}' = ANY (tool.tags)`;
+
+    const tool = await this.ormRepository
+      .createQueryBuilder('tool')
+      .where(query)
+      .orderBy('tool.title', 'ASC')
+      .getMany();
 
     return tool;
   }
