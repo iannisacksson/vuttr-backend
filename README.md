@@ -1,4 +1,4 @@
-# Gobarber Backend
+# VUTTR Backend
 
 Back-end desenvolvido para um desafio para cadastrar ferramentas muito úteis para lembrar (Very useful tools to remember - VUTTR), foi desenvolvido com Node, Typescript, Express, Postgres e JWT.
 
