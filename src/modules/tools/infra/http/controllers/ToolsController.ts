@@ -4,6 +4,7 @@ import { classToClass } from 'class-transformer';
 
 import CreateToolService from '@modules/tools/services/CreateToolService';
 import IndexToolService from '@modules/tools/services/IndexToolsService';
+import DeleteToolService from '@modules/tools/services/DeleteToolService';
 
 export default class ToolsController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -29,5 +30,15 @@ export default class ToolsController {
     const tools = await indexTool.execute(tag as string);
 
     return response.json(tools);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deleteTool = container.resolve(DeleteToolService);
+
+    await deleteTool.execute(id);
+
+    return response.status(204).json();
   }
 }

@@ -14,3 +14,9 @@ export const query = celebrate({
     tag: Joi.string(),
   },
 });
+
+export const id = celebrate({
+  [Segments.PARAMS]: {
+    id: Joi.string().uuid().required(),
+  },
+});
