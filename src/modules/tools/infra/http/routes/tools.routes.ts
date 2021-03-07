@@ -9,4 +9,6 @@ const toolsController = new ToolsController();
 
 toolsRouter.post('/', create, toolsController.create);
 
+toolsRouter.get('/', toolsController.index);
+
 export default toolsRouter;
