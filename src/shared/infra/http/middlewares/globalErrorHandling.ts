@@ -80,6 +80,9 @@ export default function globalErrorHandling(
       case 'array.empty':
         messageString = `O campo ${path[0]} não pode ser vazio.`;
         break;
+      case 'array.includesRequiredUnknowns':
+        messageString = `O campo ${path[0]} não pode ser vazio.`;
+        break;
       case 'array.min':
         messageString = `O campo ${path[0]} não pode ter um tamanho menor que ${context.limit}.`;
         break;
